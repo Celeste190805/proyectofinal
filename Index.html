@@ -1,11 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Clasificador de Trámites Mejorado</title>
+<link rel="stylesheet" href="styles.css" />
+
+<style>
+  body { font-family: Arial, sans-serif; margin: 2em; }
+  input, button { padding: 0.5em; font-size: 1em; margin-right: 0.5em; }
+  #resultado { margin-top: 1em; font-weight: bold; }
+</style>
 </head>
 <body>
-    <h1> uguuuu</h1>
+
+<body>
+  <div class="container">
+    <h1>Clasificador de Trámites</h1>
+    <input type="text" id="entrada" placeholder="Escribe el trámite aquí" />
+    <button id="btnClasificar">Clasificar</button>
+    <div id="resultado"></div>
+  </div>
+</body>
+
+<div id="resultado"></div>
+
+<script>
+const btn = document.getElementById('btnClasificar');
+const resultadoDiv = document.getElementById('resultado');
+
+btn.addEventListener('click', async () => {
+  const texto = document.getElementById('entrada').value.trim();
+  resultadoDiv.textContent = "";
+  if (!texto) {
+    alert("Por favor ingresa un texto.");
+    return;
+  }
+
+  resultadoDiv.textContent = "Analizando...";
+
+  try {
+    const respuesta = await fetch("http://127.0.0.1:5000/prediccion", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ texto })
+    });
+
+    if (!respuesta.ok) {
+      const errorData = await respuesta.json();
+      resultadoDiv.textContent = `Error: ${errorData.error || 'Error desconocido'}`;
+      return;
+    }
+
+    const data = await respuesta.json();
+    resultadoDiv.textContent = `Categoría predicha: ${data.prediccion}`;
+  } catch (error) {
+    resultadoDiv.textContent = "Error de conexión al servidor.";
+  }
+});
+</script>
+
 </body>
 </html>
