@@ -1,75 +1,61 @@
-/* Reset básico */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Fondo y centrado del contenedor */
 body {
-  background: #f0f4f8;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  font-family: Arial, sans-serif;
+  background-color: #dbb7e986;
+  margin: 0;
+  padding: 20px;
 }
 
-/* Contenedor principal */
 .container {
-  background: white;
-  width: 90%;
   max-width: 600px;
+  margin: auto;
+  background-color: #fff;
   border-radius: 12px;
-  padding: 30px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  text-align: center; /* Centrar texto */
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Título */
 h1 {
-  margin-bottom: 20px;
-  font-size: 1.8rem;
-  color: #2c3e50;
+  color: #000000;
+  text-align: center;
 }
 
-/* Input */
-input[type="text"] {
-  width: 100%;
-  padding: 12px 15px;
-  border: 2px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
-  margin-bottom: 20px;
-  text-align: center; /* Centrar texto del input */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-input[type="text"]:focus {
-  border-color: #007bff;
-  outline: none;
+label {
+  font-weight: bold;
 }
 
-/* Botón */
+input[type="text"],
+select,
+input[type="file"] {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
 button {
-  background-color: #007bff;
+  padding: 12px;
+  background-color: #d81ac88c;
   color: white;
   border: none;
-  padding: 12px 25px;
-  font-size: 1rem;
-  font-weight: 600;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-size: 16px;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #d81ac88c;
 }
 
-/* Resultado */
-#resultado {
+#estado-solicitud {
   margin-top: 20px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #34495e;
+  padding: 15px;
+  background-color: #e9f7ef;
+  border: 1px solid #65d49d;
+  border-radius: 8px;
 }
+
